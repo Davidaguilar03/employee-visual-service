@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Employee Manager</h1>
+    <p id="feedback" class="feedback"></p>
+
+    <form id="employee-form">
+        <div class="field">
+            <label for="emp-first-name">First name</label>
+            <input type="text" id="emp-first-name" placeholder="John" required>
+        </div>
+        <div class="field">
+            <label for="emp-last-name">Last name</label>
+            <input type="text" id="emp-last-name" placeholder="Doe" required>
+        </div>
+        <div class="field">
+            <label for="emp-email">Email</label>
+            <input type="email" id="emp-email" placeholder="john@example.com" required>
+        </div>
+        <div class="field">
+            <label for="emp-phone">Phone</label>
+            <input type="text" id="emp-phone" placeholder="Optional">
+        </div>
+        <div class="field">
+            <label for="emp-department">Department</label>
+            <input type="text" id="emp-department" placeholder="IT" required>
+        </div>
+        <div class="field">
+            <label for="emp-position">Position</label>
+            <input type="text" id="emp-position" placeholder="Backend Developer" required>
+        </div>
+        <div class="field">
+            <label for="emp-salary">Salary</label>
+            <input type="number" id="emp-salary" placeholder="0.00" step="0.01" min="0" required>
+        </div>
+        <div class="field">
+            <label for="emp-hire-date">Hire date</label>
+            <input type="date" id="emp-hire-date" required>
+        </div>
+        <button type="submit">Save Employee</button>
+    </form>
+
+    <div class="table-wrap">
+        <table id="employee-table">
+            <thead>
+            <tr>
+                <th>Code</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Department</th>
+                <th>Position</th>
+                <th>Salary</th>
+                <th>Hire date</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination-bar">
+        <div class="pagination-meta">
+            <span id="total-info">0 employees</span>
+        </div>
+        <div class="pagination-controls">
+            <button type="button" id="prev-page">Previous</button>
+            <span id="page-info">Page 0 of 0</span>
+            <button type="button" id="next-page">Next</button>
+        </div>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

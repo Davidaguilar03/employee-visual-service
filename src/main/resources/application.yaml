@@ -1,0 +1,6 @@
+spring.application.name: employee-visual-service
+server:
+  port: 8080
+
+app:
+  identifier: Employee Visual Frontend
