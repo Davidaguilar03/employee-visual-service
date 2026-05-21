@@ -1,4 +1,32 @@
-const paginationState = {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: app.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: app.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const paginationState = {
     page: 0,
     size: 30,
     totalPages: 0,
@@ -47,11 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
  * On success, updates totalPages, totalElements and re-renders the table and pagination controls.
  * On failure, displays the error message via {@link showFeedback}.
  *
- * @returns {Promise<void>}
+ * @returns {Promise&lt;void>}
  */
 async function loadEmployees() {
     try {
-        const response = await request(`/api/employees?page=${paginationState.page}&size=${paginationState.size}`);
+        const response = await request(`/api/employees?page=${paginationState.page}&amp;size=${paginationState.size}`);
         const normalized = normalizeEmployeesResponse(response);
         paginationState.totalPages = normalized.totalPages;
         paginationState.totalElements = normalized.totalElements;
@@ -66,7 +94,7 @@ async function loadEmployees() {
  * Fetches the current pod and node information from /api/info and displays it in the DOM.
  * On failure, falls back to a "no disponible" message for the pod-name element.
  *
- * @returns {Promise<void>}
+ * @returns {Promise&lt;void>}
  */
 async function loadPodInfo() {
     try {
@@ -157,7 +185,7 @@ function renderPaginationInfo() {
  * Each row includes a Delete button wired to {@link deleteEmployee}.
  * Does nothing (beyond clearing the table) if `employees` is not an array.
  *
- * @param {Array.<Object>} employees - Array of employee objects to render.
+ * @param {Array.&lt;Object>} employees - Array of employee objects to render.
  *   Each object contains: id, employeeCode, firstName, lastName, email,
  *   phone (optional), department, position, salary, hireDate.
  * @returns {void}
@@ -173,20 +201,20 @@ function updateUI(employees) {
     employees.forEach(emp => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${emp.employeeCode}</td>
-            <td>${emp.firstName}</td>
-            <td>${emp.lastName}</td>
-            <td>${emp.email}</td>
-            <td>${emp.phone ?? ''}</td>
-            <td>${emp.department}</td>
-            <td>${emp.position}</td>
-            <td>${Number(emp.salary).toFixed(2)}</td>
-            <td>${emp.hireDate}</td>
-            <td>
-                <div class="actions">
-                    <button type="button" class="btn-danger" onclick="deleteEmployee('${emp.id}')">Delete</button>
-                </div>
-            </td>
+            &lt;td>${emp.employeeCode}&lt;/td>
+            &lt;td>${emp.firstName}&lt;/td>
+            &lt;td>${emp.lastName}&lt;/td>
+            &lt;td>${emp.email}&lt;/td>
+            &lt;td>${emp.phone ?? ''}&lt;/td>
+            &lt;td>${emp.department}&lt;/td>
+            &lt;td>${emp.position}&lt;/td>
+            &lt;td>${Number(emp.salary).toFixed(2)}&lt;/td>
+            &lt;td>${emp.hireDate}&lt;/td>
+            &lt;td>
+                &lt;div class="actions">
+                    &lt;button type="button" class="btn-danger" onclick="deleteEmployee('${emp.id}')">Delete&lt;/button>
+                &lt;/div>
+            &lt;/td>
         `;
         tbody.appendChild(tr);
     });
@@ -198,13 +226,13 @@ function updateUI(employees) {
  * Shows a success or error message via {@link showFeedback}.
  *
  * @param {string} id - The unique identifier of the employee to delete.
- * @returns {Promise<void>}
+ * @returns {Promise&lt;void>}
  */
 async function deleteEmployee(id) {
     try {
         await request(`/api/employees/${id}`, { method: 'DELETE' });
         showFeedback('Employee deleted', false);
-        const isPageOutOfBounds = paginationState.page > 0 && paginationState.page >= paginationState.totalPages - 1;
+        const isPageOutOfBounds = paginationState.page > 0 &amp;&amp; paginationState.page >= paginationState.totalPages - 1;
         if (isPageOutOfBounds) {
             paginationState.page -= 1;
         }
@@ -221,7 +249,7 @@ async function deleteEmployee(id) {
  *
  * @param {string} url - The endpoint URL (relative or absolute).
  * @param {RequestInit} [options={}] - Optional Fetch API options (method, headers, body, etc.).
- * @returns {Promise<object|null>} Parsed JSON response body, or `null` for 204 responses.
+ * @returns {Promise&lt;object|null>} Parsed JSON response body, or `null` for 204 responses.
  * @throws {Error} If the response status is not OK (2xx), throws with the server's
  *   `message` field or the fallback string `'Request failed'`.
  */
@@ -253,3 +281,26 @@ function showFeedback(message, isError) {
     feedback.classList.remove('success', 'error');
     feedback.classList.add(isError ? 'error' : 'success');
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#deleteEmployee">deleteEmployee</a></li><li><a href="global.html#loadEmployees">loadEmployees</a></li><li><a href="global.html#loadPodInfo">loadPodInfo</a></li><li><a href="global.html#normalizeEmployeesResponse">normalizeEmployeesResponse</a></li><li><a href="global.html#renderPaginationInfo">renderPaginationInfo</a></li><li><a href="global.html#request">request</a></li><li><a href="global.html#setupPaginationControls">setupPaginationControls</a></li><li><a href="global.html#showFeedback">showFeedback</a></li><li><a href="global.html#updateUI">updateUI</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.5</a> on Wed May 20 2026 21:05:47 GMT-0500 (Colombia Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
