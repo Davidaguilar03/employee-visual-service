@@ -208,3 +208,12 @@ button:disabled {
     margin-bottom: 16px;
     font-family: 'Courier New', monospace;
 }
+.version-badge {
+    background: #2563eb;
+    color: white;
+    font-size: 13px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    vertical-align: middle;
+    font-weight: 500;
+}
