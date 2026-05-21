@@ -198,3 +198,13 @@ button:disabled {
     box-shadow: none;
 }
 
+.pod-info {
+    text-align: center;
+    font-size: 12px;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-family: 'Courier New', monospace;
+}

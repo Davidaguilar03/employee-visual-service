@@ -6,6 +6,7 @@ const paginationState = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    loadPodInfo();
     setupPaginationControls();
     loadEmployees();
 
@@ -50,6 +51,16 @@ async function loadEmployees() {
         renderPaginationInfo();
     } catch (error) {
         showFeedback(error.message, true);
+    }
+}
+
+async function loadPodInfo() {
+    try {
+        const info = await request('/api/info');
+        document.getElementById('pod-name').textContent = 'Pod: ' + info.podName;
+        document.getElementById('node-name').textContent = 'Nodo: ' + info.nodeName;
+    } catch (error) {
+        document.getElementById('pod-name').textContent = 'Pod info no disponible';
     }
 }
 
